@@ -1,0 +1,77 @@
+// app.scss
+
+body {
+  margin: 0;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: backgroundAnimation 10s infinite alternate;
+  background: linear-gradient(270deg, #050505, #a90758);
+  background-size: 400% 400%;
+}
+
+@keyframes backgroundAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+.name-entry, .welcome-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  color: white;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+  padding: 20px; // إضافة padding لتحسين المساحة
+}
+
+// إعدادات للصور لتكون مرنة
+.photos-container {
+  display: flex;
+  justify-content: flex-start;
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 50%;
+  overflow: hidden; // لمنع تجاوز الصور
+}
+
+.photo {
+  max-width: 100%; // يجعل الصورة مرنة
+  height: auto; // يحافظ على نسبة العرض إلى الارتفاع
+}
+
+// وسائط (Media Queries) لتغيير التصميم حسب حجم الشاشة
+@media (max-width: 768px) {
+  .photos-container {
+    width: 100%; // جعل الصور تأخذ عرض كامل الشاشة
+    justify-content: center; // توسيط الصور
+  }
+
+  .name-entry, .welcome-message {
+    height: auto; // السماح للارتفاع بالتكيف
+    padding: 10px; // تقليل padding
+  }
+}
+
+@media (max-width: 480px) {
+  .name-entry, .welcome-message {
+    font-size: 1.2em; // تصغير حجم النص
+  }
+}
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; // ارتفاع الشاشة بالكامل
+}
+
+

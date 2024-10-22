@@ -1,0 +1,120 @@
+// في ملف styles/Gallery.scss
+
+.gallery {
+  display: flex;
+  flex-direction: column; /* ترتيب العناصر عمودياً */
+  align-items: flex-start; /* محاذاة العناصر إلى اليسار */
+  justify-content: flex-start; /* محاذاة العناصر إلى الأعلى */
+  height: 100vh; /* ارتفاع كامل */
+  padding: 10px; /* مسافة داخلية */
+  box-sizing: border-box; /* تضمين المساحة في الحسابات */
+  position: absolute; /* تأكد من وجودها على اليمين */
+  right: 0; /* محاذاة الديف إلى اليمين */
+  top: 0; /* محاذاة الديف إلى أعلى الصفحة */
+  overflow-y: auto; /* السماح بالتمرير العمودي */
+  opacity: 0; /* لجعل الظهور تدريجي */
+  animation: fadeIn 1s forwards; /* تأثير الانيميشن عند الفتح */
+
+  @media (max-width: 768px) {
+    flex-direction: row; /* تغيير الاتجاه إلى أفقي في الأجهزة الصغيرة */
+    height: auto; /* السماح للارتفاع بالتكيف مع المحتوى */
+    overflow-x: auto; /* السماح بالتمرير الأفقي */
+    flex-wrap: nowrap; /* منع التفاف العناصر */
+  }
+
+  @media (max-width: 480px) {
+    flex-direction: row; /* تأكد من الحفاظ على الاتجاه الأفقي */
+    justify-content: center; /* محاذاة العناصر في الوسط */
+  }
+}
+
+.gallery-item {
+  width: 100px; /* عرض ثابت لكل عنصر */
+  height: 100px; /* ارتفاع ثابت لكل عنصر */
+  margin: 5px 0; /* مسافة عمودية بين الصور */
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 8px;
+  position: relative; /* لتحديد الصورة داخل العنصر */
+  transition: transform 0.5s ease; /* تأثير حركة بطيء عند التمرير */
+
+  img {
+    width: 100%; /* جعل الصور بعرض العنصر */
+    height: 100%; /* جعل الصور بارتفاع العنصر */
+    object-fit: cover; /* التأكد من تغطية الصورة للعنصر بالكامل */
+    opacity: 0.8; /* شفافية خفيفة للتأثير */
+    transition: opacity 0.5s ease; /* تأثير حركة بطيء على الشفافية */
+
+    &:hover {
+      opacity: 1; /* زيادة الشفافية عند التمرير */
+    }
+  }
+
+  &:hover {
+    transform: scale(1.1); /* تأثير تكبير عند التمرير */
+  }
+
+  @media (max-width: 768px) {
+    width: 80px; /* تقليل عرض العنصر في الأجهزة الصغيرة */
+    height: 80px; /* تقليل ارتفاع العنصر في الأجهزة الصغيرة */
+    margin: 4px; /* تقليل المسافة بين العناصر */
+  }
+
+  @media (max-width: 480px) {
+    width: 60px; /* عرض أصغر للأجهزة الصغيرة جداً */
+    height: 60px; /* ارتفاع أصغر للأجهزة الصغيرة جداً */
+    margin: 2px; /* تقليل المسافة بين العناصر */
+  }
+}
+
+.image-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(50px, 1fr)); /* إنشاء أعمدة مرنة */
+  gap: 1px; /* المسافة بين الصور */
+  padding: 10px;
+
+  img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px; /* حواف دائرية للصور */
+    transition: transform 0.3s ease; /* تأثير التحريك عند التمرير */
+
+    &:hover {
+      transform: scale(1.05); /* تكبير الصورة عند التمرير */
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .image-gallery {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* تقليل حجم الأعمدة */
+  }
+}
+
+@media (max-width: 480px) {
+  .image-gallery {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); /* تقليل حجم الأعمدة أكثر */
+  }
+}
+
+// تأثيرات الانيميشن
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
